@@ -8,6 +8,7 @@
     },
     "require": {
         "php": "^7.4",
+        "php-di/php-di": "^6.3",
         "slim/psr7": "^1.3",
         "slim/slim": "^4.7",
         "symfony/console": "^5.2"
@@ -16,5 +17,8 @@
         "psr-4": {
             "App\\": "src/"
         }
+    },
+    "scripts": {
+        "console": "php bin/app.php --ansi"
     }
 }
