@@ -7,8 +7,13 @@ use App\Console\TmpCommand;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+$container = require __DIR__ . '/../config/container.php';
+
 $cli = new Application('Console');
 
-$cli->add(new TmpCommand());
+$commands = $container->get('config')['console']['commands'];
+foreach ($commands as $command) {
+    $cli->add($container->get($command));
+}
 
 $cli->run();

@@ -5,13 +5,13 @@ declare(strict_types=1);
 use Slim\Factory\AppFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use DI\Container;
+use DI\ContainerBuilder;
 
 http_response_code(500);
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$container = new Container();
+$container = require __DIR__ . '/../config/container.php';
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
