@@ -28,6 +28,11 @@ services:
         working_dir: /www/api
         links:
             - api-mysql
+    api-cli:
+        build: ./api/docker/cli
+        volumes:
+            - .:/www
+        working_dir: /www/api
     api-mysql:
         image: mariadb:10.5
         ports:
