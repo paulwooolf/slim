@@ -5,6 +5,8 @@ declare(strict_types=1);
 use Slim\Factory\AppFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use App\Http\Action\IndexAction;
+use App\Http\Action\HomeAction;
 
 http_response_code(500);
 
@@ -14,14 +16,7 @@ $container = require __DIR__ . '/../config/container.php';
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-$app->get('/', function (Request $request, Response $response, array $args) {
-   $response->getBody()->write("I't is / path");
-   return $response;
-});
-
-$app->get('/home', function (Request $request, Response $response, array $args) {
-    $response->getBody()->write("I't is /home path");
-    return $response;
-});
+$app->get('/', IndexAction::class);
+$app->get('/home', HomeAction::class);
 
 $app->run();
