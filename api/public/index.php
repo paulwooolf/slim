@@ -16,7 +16,6 @@ $container = require __DIR__ . '/../config/container.php';
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-$app->get('/', IndexAction::class);
-$app->get('/home', HomeAction::class);
+(require __DIR__ . '/../config/routes.php')($app);
 
 $app->run();
