@@ -1,4 +1,4 @@
-FROM php:7.4.13-cli
+FROM php:7.4.16-cli
 
 # install packages and extension
 RUN DEBIAN_FRONTEND=noninteractive
