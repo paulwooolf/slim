@@ -14,12 +14,16 @@
         "symfony/console": "^5.2",
         "ext-json": "*"
     },
+    "require-dev": {
+        "overtrue/phplint": "2.3.5"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "src/"
         }
     },
     "scripts": {
-        "console": "php bin/app.php --ansi"
+        "console": "php bin/app.php --ansi",
+        "lint": "phplint"
     }
 }
