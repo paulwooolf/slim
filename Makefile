@@ -23,4 +23,7 @@ lint:
 sniffer:
 	docker-compose run --rm api-cli composer cs-check
 
+analyze:
+	docker-compose run --rm api-cli composer psalm
+
 # docker-compose run --rm api-cli
