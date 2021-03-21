@@ -11,5 +11,5 @@ $builder->addDefinitions(__DIR__ . '/dependencies.php');
 try {
     return $builder->build();
 } catch (Exception $e) {
-
+    echo $e->getMessage();
 }
