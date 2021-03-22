@@ -4,6 +4,7 @@ stop: docker-stop
 build: docker-build
 rebuild: stop build up
 check: lint sniffer
+tests: unit
 
 docker-up:
 	docker-compose up -d
@@ -26,4 +27,5 @@ sniffer:
 analyze:
 	docker-compose run --rm api-cli composer psalm
 
-# docker-compose run --rm api-cli
+unit:
+	docker-compose run --rm api-cli composer tests
