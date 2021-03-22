@@ -1,15 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Action;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
+use App\Http\JsonResponse;
+use JsonException;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use stdClass;
 
-class IndexAction
+class IndexAction implements RequestHandlerInterface
 {
-    public function __invoke(Request $request, Response $response): Response
+    /**
+     * @param ServerRequestInterface $request
+     * @return ResponseInterface
+     * @throws JsonException
+     */
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $response->getBody()->write('index');
-        return $response->withHeader('Content-Type', 'application/json');
+        return new JsonResponse(new stdClass());
     }
 }
