@@ -4,19 +4,23 @@ declare(strict_types=1);
 
 namespace Test\Functional\Http\Action;
 
-use PHPUnit\Framework\TestCase;
-use Slim\Psr7\Factory\ServerRequestFactory;
 
-class HomeTest extends TestCase
+use Test\Functional\Http\AbstractFunctionalTest;
+
+class HomeTest extends AbstractFunctionalTest
 {
     public function testSuccess(): void
     {
-        $container = require __DIR__ . '/../../../../config/container.php';
-        $app = (require __DIR__ . '/../../../../config/app.php')($container);
-        $request = (new ServerRequestFactory())->createServerRequest('GET', '/');
-        $response = $app->handle($request);
+        $response = $this->getResponse('GET', '/');
 
         self::assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         self::assertEquals(200, $response->getStatusCode());
+    }
+
+    public function testNotFound(): void
+    {
+        $response = $this->getResponse('GET', '/thisPageNo');
+
+        self::assertEquals(404, $response->getStatusCode());
     }
 }
