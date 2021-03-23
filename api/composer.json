@@ -16,6 +16,7 @@
     },
     "require-dev": {
         "overtrue/phplint": "2.3.5",
+        "phpunit/php-code-coverage": "^9.2",
         "phpunit/phpunit": "^9.5",
         "squizlabs/php_codesniffer": "3.5.8",
         "vimeo/psalm": "4.6.4"
