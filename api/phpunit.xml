@@ -11,17 +11,26 @@
          cacheResultFile="var/.phpunit.result.cache"
          verbose="true">
     <testsuites>
-        <testsuite name="default">
-            <directory suffix="Test.php">tests</directory>
+        <testsuite name="unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="functional">
+            <directory>tests/Functional</directory>
         </testsuite>
     </testsuites>
 
-    <coverage cacheDirectory=".phpunit.cache/code-coverage"
-              processUncoveredFiles="true">
+    <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">src</directory>
         </include>
+<!--        <exclude>-->
+<!--            <directory>src/Auth/Test</directory>-->
+<!--            <directory>src/FeatureToggle/Test</directory>-->
+<!--            <directory>src/Frontend/Test</directory>-->
+<!--            <directory>src/Http/Test</directory>-->
+<!--        </exclude>-->
     </coverage>
+
     <php>
         <env name="APP_ENV" value="test" force="true" />
         <env name="APP_DEBUG" value="1" force="true" />
