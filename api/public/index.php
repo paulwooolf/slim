@@ -13,9 +13,5 @@ http_response_code(500);
 require __DIR__ . '/../vendor/autoload.php';
 
 $container = require __DIR__ . '/../config/container.php';
-AppFactory::setContainer($container);
-$app = AppFactory::create();
-
-(require __DIR__ . '/../config/routes.php')($app);
-
+$app = (require __DIR__ . '/../config/app.php')($container);
 $app->run();
